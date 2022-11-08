@@ -1,8 +1,8 @@
+import React,  { useState } from 'react';
 import './App.css';
 import TodoList from './TodoList.js'
 
-function App() {
-  let items = [
+const ITEM_INITIAL_STATE = [
     {
       id: 1 ,
       text: 'learn React',
@@ -14,7 +14,10 @@ function App() {
       completed: false
     },
   ]
+function App() {
+  
   let title = 'Things to do';
+  const [items] = useState(ITEM_INITIAL_STATE)
   return (
     <div className="containner">
      <div className="row">
