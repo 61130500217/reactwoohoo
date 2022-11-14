@@ -3,11 +3,11 @@ import Header from "./Header";
 import TodoItem from "./TodoItem";
 import Footer from "./Footer";
 const TodoList = (props) => {
-  const { items, title } = props;
+  const { items, title, addNewItem } = props;
   const count = items.length;
   return (
      <div className="todolist">
-          <Header title={title} />
+          <Header title={title} addNewItem={addNewItem} />
 
           <ul className="list-group lit-group-flush">
                {items.map(item => (

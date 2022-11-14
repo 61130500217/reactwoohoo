@@ -1,14 +1,16 @@
 import React, { useState, useCallback} from "react";
 import {KEY_RETURN} from 'keycode-js'
 
-const InputBox = () => {
-     const [value, setValue ] = useState('');
+const InputBox = (props) => {
+     const {addNewItem} = props;
+     const [value, setValue] = useState('');
      const handleKeyUpEvent = useCallback( e => {
           if(e.keyCode === KEY_RETURN) {
                //Add new todo here + clear text box
-               console.log(`KEY_RETURN pressed`)
+               addNewItem(e.target.value);
+               setValue('');
           }
-     }, []);
+     }, [addNewItem, setValue]);
      
      const handleChangeEvent = useCallback(
           e => {
