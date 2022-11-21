@@ -2,11 +2,11 @@ import React from 'react'
 import InputBox from './InputBox';
 
 const Header = (props) => {
-     const {title, addNewItem} = props;
+     const {title, addNew} = props;
      return (
      <header>
           <h1>{title.toUpperCase()}</h1>
-          <InputBox addNewItem={addNewItem} />
+          <InputBox addNee={addNew} />
      </header>
 
      )

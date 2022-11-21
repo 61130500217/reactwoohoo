@@ -1,28 +1,36 @@
-import React, { useState, useCallback} from "react";
-import {KEY_RETURN} from 'keycode-js'
-
-const InputBox = (props) => {
-     const {addNewItem} = props;
-     const [value, setValue] = useState('');
-     const handleKeyUpEvent = useCallback( e => {
-          if(e.keyCode === KEY_RETURN) {
-               //Add new todo here + clear text box
-               addNewItem(e.target.value);
-               setValue('');
-          }
-     }, [addNewItem, setValue]);
+import React from "react";
+import { KEY_RETURN } from 'keycode-js'
+//end here
+class InputBox extends React.Component {
+     constructor(props) {
+          super(props)
+          this.state = {
+               value: props.value || ''
+          };
+     }
      
-     const handleChangeEvent = useCallback(
-          e => {
-               setValue(e.target.value);
-          }, [setValue]
-     )
-     return (
-     <input type="text" 
-     className="form-control add-todo" 
-     value={value}
-     onKeyUp={handleKeyUpEvent}
-     onChange={handleChangeEvent}
-     placeholder="add new0"/> )
+     handleKeyUpEvent(e) {
+          const {addNewItem} = this.props;
+          const text = this.state.value.trim()
+
+          if(e.keyCode === KEY_RETURN && text ) {
+               //Add new todo here + clear text box
+               addNewItem(text);
+               this.clear()          }
+     }
+     
+     handleChangeEvent(e) {
+               this.setState({value: e.target.value});
+     }
+     render() {
+          return (
+               <input type="text" 
+               className="form-control add-todo" 
+               value={this.state.value}
+               onKeyUp={this.handleKeyUpEvent.bind(this)}
+               onChange={this.handleChangeEvent.bind(this)}
+               placeholder="add new"/> )
+     }
+     
 }
 export default InputBox

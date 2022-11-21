@@ -6,11 +6,13 @@ const Footer = (props) => {
 
      return (
           <div className="todo-footer clearfix" >
-               <div className='float-start'>
-               <span className="count-todos">{count}</span>
+               <div className='pull-left'>
+                    <strong>
+                      <span className="count-todos">{count}</span>   
+                    </strong>
                {' item left '}
                </div>
-               <div className='float-end'>
+               <div className='pull-right'>
                     <Filter filter={filter} change={changeFilter} />
                </div>
           </div>

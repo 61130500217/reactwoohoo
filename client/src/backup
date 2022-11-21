@@ -1,0 +1,18 @@
+ 
+  const [items, updateItems] = useState(ITEM_INITIAL_STATE)
+  const [filter, setFilter] = useState(FILTER_DEFAULT)
+  const addNewItem = useCallback(
+    text => {
+      updateItems( items => {
+        const nextId = items.length +1 ;
+        const newItem = {
+          id: nextId,
+          text: text
+        }
+        return [...items, newItem];
+      });
+    },
+    [updateItems]
+  )
+  const ChangeFilter = useCallback(value => setFilter(value), [setFilter])
+  
